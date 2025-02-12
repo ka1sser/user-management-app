@@ -25,3 +25,81 @@ class UserManager:
 
         for user in self.users:
             print(user.to_dict())
+
+    def get_user(self, user_id):
+        """
+        This function retrieves the user containing the input user_id
+
+        Args:
+            user_id (int): Input should be an int containing the user_id
+        """
+        for user in self.users:
+            if user.user_id == user_id:
+                return user.to_dict()
+
+    def delete_user(self, user_id):
+        """
+        This function deletes the user containing the user_id input
+
+        Args:
+            user_id (int): Input should be an int containing the user_id
+        """
+
+        for user in self.users:
+            if user.user_id == user_id:
+                self.users.remove(user)
+
+    def reset_user(self, user_id):
+        """
+        This function resets the user password to default
+
+        Args:
+            user_id (int): Input should be an int containing the user_id
+        """
+        for user in self.users:
+            if user.user_id == user_id:
+                user.reset()
+
+    def lock_user(self, user_id):
+        """
+        This function changes the user's permission to locked in boolean False.
+
+        Args:
+            user_id (int): Input should be an int containing the user_id
+        """
+        for user in self.users:
+            if user.user_id == user_id:
+                user.lock()
+
+    def unlock_user(self, user_id):
+        """
+        This function changes the user's permission to unlocked in boolean True.
+
+        Args:
+            user_id (int): Input should be an int containing the user_id
+        """
+        for user in self.users:
+            if user.user_id == user_id:
+                user.unlock()
+
+    def enable_user(self, user_id):
+        """
+        This function changes the status of the user to "Enabled".
+
+        Args:
+            user_id (int): Input should be an int containing the user_id
+        """
+        for user in self.users:
+            if user.user_id == user_id:
+                user.enable()
+
+    def disable_user(self, user_id):
+        """
+        This function changes the status of the user to "Disabled".
+
+        Args:
+            user_id (int): Input should be an int containing the user_id
+        """
+        for user in self.users:
+            if user.user_id == user_id:
+                user.disable()

@@ -89,7 +89,7 @@ class User:
 
         return self.permission
 
-    def reset_user_pw(self):
+    def reset(self):
         """
         This function resets the user password to default value "123456"
 

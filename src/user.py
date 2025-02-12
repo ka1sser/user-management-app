@@ -4,24 +4,32 @@
 class User:
     """This class handles all operations related to individual user"""
 
-    def __init__(
-        self,
-        user_name,
-        user_password,
-        user_id,
-        auth_algo,
-        priv_algo,
-        status,
-        permission,
-    ):
+    def __init__(self, user_name, user_password, user_id, auth_algo, priv_algo):
 
         self.user_name = user_name
         self.user_password = user_password
         self.user_id = user_id
         self.auth_algo = auth_algo
         self.priv_algo = priv_algo
-        self.status = status
-        self.permission = permission
+        self.status = "Enabled"
+        self.permission = True
+
+    def to_dict(self):
+        """
+        This functions creates a dictionary of the user details
+
+        Returns:
+            (dict): Returns all the variables of user in form of a dictionary.
+        """
+
+        return {
+            "Name": self.user_name,
+            "ID": self.user_id,
+            "Auth_Algo": self.auth_algo,
+            "Priv_Algo": self.priv_algo,
+            "Status": self.status,
+            "Permission": self.permission,
+        }
 
     def change_password(self, new_password):
         """

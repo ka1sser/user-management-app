@@ -1,18 +1,50 @@
 """This module contains the User Class"""
 
+import log_handler
+import config_handler
+
+log_path = config_handler.import_log_path()
+logger = log_handler.initialize_logger(log_path, "user_mgmt", "file_logger")
+
 
 class User:
     """This class handles all operations related to individual user"""
 
     def __init__(self, user_name, user_password, user_id, auth_algo, priv_algo):
 
-        self.user_name = user_name
-        self.user_password = user_password
-        self.user_id = user_id
-        self.auth_algo = auth_algo
-        self.priv_algo = priv_algo
-        self.status = "Enabled"
-        self.permission = True
+        try:
+            if not isinstance(user_name, str) or not user_name.strip():
+                raise ValueError("User name must be a non-empty string")
+            if not isinstance(user_password, str) or not user_password:
+                raise ValueError("Password cannot be empty")
+            if not isinstance(user_id, int) or user_id <= 0:
+                raise ValueError("User ID must be a positive integer")
+            if not isinstance(auth_algo, str) or not auth_algo.strip():
+                raise ValueError("Authentication algorithm must be a non-empty string")
+            if not isinstance(priv_algo, str) or not priv_algo.strip():
+                raise ValueError("Privary algorithm must be a non-empty string")
+
+            self.user_name = user_name
+            self.user_password = user_password
+            self.user_id = user_id
+            self.auth_algo = auth_algo
+            self.priv_algo = priv_algo
+            self.status = "Enabled"
+            self.permission = True
+
+            logger.info(f"User {self.user_name} has been created!")
+
+        except ValueError as e:
+            logger.error(f"ValueError occured in User initialization: {e}")
+            raise
+
+        except TypeError as e:
+            logger.error(f"TypeError occured in User initialization: {e}")
+            raise
+
+        except Exception as e:
+            logger.error(f"An error occured in User initialization: {e}")
+            raise
 
     def to_dict(self):
         """

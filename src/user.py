@@ -75,6 +75,8 @@ class User:
         """
         self.user_password = new_password
 
+        logger.info(f"Password for user: {self.user_name}, successfully changed.")
+
         return self.user_password
 
     def enable(self):

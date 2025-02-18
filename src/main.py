@@ -4,7 +4,8 @@ import group
 import group_manager
 import config_handler
 
-csv_path = config_handler.import_csv_path()
+csv_input_path = config_handler.import_csv_input_path()
+csv_output_path = config_handler.import_csv_output_path()
 
 
 def main():
@@ -51,9 +52,11 @@ def main():
     gr_manager.display_groups()
     gr_manager.display_group_members("CSS")
 
-    manager.save_users_to_csv(csv_path, gr_manager)
+    manager.save_users_to_csv(csv_output_path, gr_manager)
 
     print()
+    manager.load_users_from_csv(csv_input_path)
+    manager.display_users()
 
 
 if __name__ == "__main__":

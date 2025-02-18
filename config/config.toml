@@ -1,3 +1,4 @@
 [path]
 log_path = "C:/Users/eserkai/OneDrive - Ericsson/Documents/Programming/Python/Training/user-management-app/logs"
-csv_path = "C:/Users/eserkai/OneDrive - Ericsson/Documents/Programming/Python/Training/user-management-app/files/users.csv"
+csv_output_path = "C:/Users/eserkai/OneDrive - Ericsson/Documents/Programming/Python/Training/user-management-app/files/users.csv"
+csv_input_path = "C:/Users/eserkai/OneDrive - Ericsson/Documents/Programming/Python/Training/user-management-app/files/to_add.csv"

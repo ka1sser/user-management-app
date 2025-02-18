@@ -2,6 +2,9 @@ import user
 import user_manager
 import group
 import group_manager
+import config_handler
+
+csv_path = config_handler.import_csv_path()
 
 
 def main():
@@ -36,9 +39,9 @@ def main():
 
     p3 = user.User("Jev2", "bossing", 3, "SHA", "DES")
     print()
-    g1 = group.Group("Admins", "Owner")
+    g1 = group.Group("CSS", "Admin")
     g1.add_user_to_group(p1)
-    g2 = group.Group("Guests", "Members")
+    g2 = group.Group("HR", "Member")
     g2.add_user_to_group(p2)
     g2.add_user_to_group(p3)
 
@@ -46,7 +49,11 @@ def main():
     gr_manager.add_group(g1)
     gr_manager.add_group(g2)
     gr_manager.display_groups()
-    gr_manager.display_group_members("Guests")
+    gr_manager.display_group_members("CSS")
+
+    manager.save_users_to_csv(csv_path, gr_manager)
+
+    print()
 
 
 if __name__ == "__main__":

@@ -131,3 +131,21 @@ class User:
         self.user_password = "123456"
 
         return self.user_password
+
+    def update_auth_algo(self, new_auth_algo):
+        """
+        This function updates the auth_algo of the user
+
+        Args:
+            new_auth_algo (str): New auth_algo to be assiged
+        """
+        self.auth_algo = new_auth_algo
+
+    def update_priv_algo(self, new_priv_algo):
+        """
+        This function updates the priv_algo of the user
+
+        Args:
+            new_priv_algo (str): New priv_algo to be assiged
+        """
+        self.priv_algo = new_priv_algo
